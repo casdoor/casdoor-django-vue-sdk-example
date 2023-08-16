@@ -1,4 +1,4 @@
-# Copyright 2022 The Casdoor Authors. All Rights Reserved.
+# Copyright 2023 The Casdoor Authors. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -37,7 +37,6 @@ def parse_error(json_string):
 
 # @method_decorator(ensure_csrf_cookie, name='dispatch')
 class SignIn(View):
-
     def post(self, request):
         code = request.GET.get('code')
         # state = request.GET.get('state')
@@ -55,7 +54,6 @@ class SignIn(View):
 
 
 class SignOut(View):
-
     @authz_required
     def post(self, request):
         del request.session['casdoorUser']
@@ -63,7 +61,6 @@ class SignOut(View):
 
 
 class ToLogin(View):
-
     def get(self, request):
         sdk = request.current_app.config.get('CASDOOR_SDK')
         redirect_url = sdk.get_auth_link(redirect_uri=request.current_app.config.get('REDIRECT_URI'),
@@ -72,7 +69,6 @@ class ToLogin(View):
 
 
 class Index(View):
-
     @authz_required
     def get(self, request):
         casdoorUser = request.session.get('casdoorUser')
@@ -84,7 +80,6 @@ class Index(View):
 
 
 class Account(View):
-
     @authz_required
     def get(self, request):
         sdk: CasdoorSDK = request.current_app.config.get('CASDOOR_SDK')
