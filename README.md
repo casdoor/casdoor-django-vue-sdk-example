@@ -91,7 +91,8 @@ Backend, at http://localhost:5000:
 python -m venv venv
 source venv/bin/activate  # on Windows: venv\Scripts\activate
 pip install -r requirements.txt
-python manage.py migrate\npython manage.py runserver 5000
+python manage.py migrate
+python manage.py runserver 5000
 ```
 
 Frontend, at http://localhost:8080:
