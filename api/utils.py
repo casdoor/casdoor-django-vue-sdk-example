@@ -13,6 +13,7 @@
 # limitations under the License.
 
 from functools import wraps
+
 from django.http import JsonResponse
 
 
@@ -22,6 +23,6 @@ def authz_required(f):
         if 'casdoorUser' in request.session:
             return f(self, request, *args, **kwargs)
         else:
-            return JsonResponse({'status': 'error'})
-    
+            return JsonResponse({'status': 'error', 'msg': 'casdoorUser session key does not exist'})
+
     return wrapper

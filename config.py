@@ -12,8 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
-
 from casdoor import CasdoorSDK
 
 certificate = '''-----BEGIN CERTIFICATE-----
@@ -56,5 +54,3 @@ class Config:
         application_name='app-vue-python-example',
     )
     REDIRECT_URI = 'http://localhost:5000/api/signin'
-    SECRET_TYPE = 'filesystem'
-    SECRET_KEY = os.urandom(24)
